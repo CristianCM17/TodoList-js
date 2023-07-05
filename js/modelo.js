@@ -17,6 +17,26 @@ export default class Model {
     return this.todos;
   }
 
+  /**
+   * lo mismo que
+   * const index = this.todos.findIndex((todo) => todo.id === id);
+   * @param {*} id 
+   */
+  findTodo(id) {
+    return this.todos.findIndex((todo) => todo.id === id);
+  }
+
+  /**
+   * encontrar el todo por id y marcarle lo diferente a completed
+   * @param {*} id 
+   */
+  toggleCompleted(id) {
+    const index = this.findTodo(id)
+    const todo= this.todos[index];
+    todo.completed = !todo.completed; //si esfalso pasa a verdadero y bi
+    console.log(this.todos);
+  }
+
 
   addTodo(title, description) {
   //creamos un nuevo objeto  
@@ -33,5 +53,18 @@ export default class Model {
     //devolver un clon del objeto a la vista
     //return Object.assign({}, todo);
      return {...todo};
+  }
+
+  /**
+   * Buscar el indice del todo que nos la pasara
+   * la vista, para borrarlo del array todos
+   * @param {*} id 
+   */
+
+  removeTodo(id) {
+    const index = this.todos.findIndex((todo) => todo.id === id); //Buscar el id del todo
+    //console.log(this.todos[index]);//me imprime el todo que buscamos
+    this.todos.splice(index, 1); //me borra el todo apartir del index osea que borra asi mismo
+
   }
 }
