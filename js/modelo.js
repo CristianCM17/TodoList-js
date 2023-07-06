@@ -1,16 +1,37 @@
 export default class Model {
 
     /**
-     * Todo lo relacionado con la creacion de losobjetos todos
+     * Todo lo relacionado con los objetos todos
      */
   constructor() {
     this.view = null;
-    this.todos = [];
+    this.todos = JSON.parse(localStorage.getItem('todos'));
+
+
+    //si hay todos nullos o undefined agregamos un todo default
+    if (!this.todos || this.todos.length < 1) {
+        this.todos = [
+          {
+            id: 0,
+            title: 'Learn JS',
+            description: 'Watch JS Tutorials',
+            completed:false
+          }
+        ]
+    }
+
     this.currentId=1;
   }
 
   setView(view) {
     this.view = view;
+  }
+
+  /**
+   * Almacenamos en el navegador los todos y se convierten a formato Json
+   */
+  save() {
+    localStorage.setItem('todos', JSON.stringify(this.todos));
   }
 
   getTodos() {
