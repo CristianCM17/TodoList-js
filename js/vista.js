@@ -24,6 +24,17 @@ export default class view {
   }
 
   /**
+   * cuando recibimos la losta todos la itera para agregar una nueva fila para cada todo
+   * sirve para cuando tengamos elmacenado en el localstorage todos se queden ahi y no se borren en terminso de vista
+   */
+  render() {
+    const todos = this.model.getTodos();
+    for (const todo of todos) {
+      this.addrow(todo);
+    }
+  }
+
+  /**
    * Funcion parapasarle el titulo y descripcion al addtodo del modelo el cual crea
    * objetos con esa inforamcion
    * @param {*} title

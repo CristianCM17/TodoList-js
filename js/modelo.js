@@ -18,9 +18,12 @@ export default class Model {
             completed:false
           }
         ]
+        this.currentId=1;
+    }else{
+      this.currentId = this.todos[this.todos.length-1].id +1 //el ultimo todo -1 al id del todo se le agrega 1
     }
 
-    this.currentId=1;
+    
   }
 
   setView(view) {
@@ -71,6 +74,9 @@ export default class Model {
     this.todos.push(todo); //agregamos al array de todos
     console.log(this.todos);
 
+    //antes de devolver el todo que nos lo guarde
+    this.save();
+
     //devolver un clon del objeto a la vista
     //return Object.assign({}, todo);
      return {...todo};
@@ -86,6 +92,7 @@ export default class Model {
     const index = this.todos.findIndex((todo) => todo.id === id); //Buscar el id del todo
     //console.log(this.todos[index]);//me imprime el todo que buscamos
     this.todos.splice(index, 1); //me borra el todo apartir del index osea que borra asi mismo
+    this.save(); //cuando borramos guardamos
 
   }
 }

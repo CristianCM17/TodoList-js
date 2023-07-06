@@ -9,4 +9,7 @@ document.addEventListener('DOMContentLoaded',function () {
         model.setView(view);
         view.setModel(model);
 
+        //por cada cosa que encuentre en el localstorage crea una fila nueva
+        view.render();
+
 });
