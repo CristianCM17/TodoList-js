@@ -29,9 +29,10 @@ export default class view {
    */
   render() {
     const todos = this.model.getTodos();
-    for (const todo of todos) {
-      this.addrow(todo);
-    }
+   // for (const todo of todos) {
+     // this.addrow(todo);
+    //}
+    todos.forEach((todo) => this.addrow(todo))
   }
 
   /**
