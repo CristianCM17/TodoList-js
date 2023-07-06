@@ -58,7 +58,7 @@ export default class Model {
     const index = this.findTodo(id)
     const todo= this.todos[index];
     todo.completed = !todo.completed; //si esfalso pasa a verdadero y bi
-    console.log(this.todos);
+    this.save();
   }
 
 

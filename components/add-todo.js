@@ -1,3 +1,5 @@
+import Alert from './alert.js'
+
 export default class AddTodo{
 
     /**
@@ -7,6 +9,8 @@ export default class AddTodo{
         this.btn=document.getElementById("add");
         this.title= document.getElementById("title");
         this.description= document.getElementById("description");
+
+        this.alert= new Alert('alert');
     }
 
     /**
@@ -22,8 +26,10 @@ export default class AddTodo{
         this.btn.onclick= () => {
             //si es vacio
         if (this.title.value==='' || this.description.value===''){
-            console.error("Incorrecto");
+            this.alert.show('Title and description are required');
         }else{
+
+            this.alert.hide();
             //si no es vacio se manda como parametros 
             callback(this.title.value,this.description.value);
         }

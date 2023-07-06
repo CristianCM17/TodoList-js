@@ -1,6 +1,6 @@
 export default class Alert{
     constructor(alertId){
-        this.alert= document.getElementById("alert");
+        this.alert= document.getElementById(alertId);//recibimos el tipo de id
     }
 
     /**
